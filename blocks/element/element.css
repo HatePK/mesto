@@ -1,0 +1,13 @@
+@import url(./__image/element__image.css);
+@import url(./__panel/element__panel.css);
+@import url(./__like/element__like.css);
+@import url(./__text/element__text.css);
+
+.element {
+    display: flex;
+    flex-direction: column;
+    width: 282px;
+    height: 362px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
