@@ -6,4 +6,8 @@
     font-size: 42px;
     line-height: 1.33;
     color: #FFFFFF;
+    max-width: 400px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }

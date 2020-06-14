@@ -1,0 +1,21 @@
+.form__submit {
+    max-width: 358px;
+    background: #000000;
+    border-radius: 2px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: center;
+    color: #FFFFFF;
+    margin: 48px 0 36.51px;
+    height: 50.15px;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+}
+
+.form__submit:focus {
+    outline: none;
+}

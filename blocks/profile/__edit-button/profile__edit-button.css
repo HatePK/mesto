@@ -1,3 +1,13 @@
 .profile__edit-button {
     align-self: flex-end;
+    padding: 0;
+    background: none;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+    height: 24px;
+}
+
+.profile__edit-button:focus {
+    outline: none;
 }

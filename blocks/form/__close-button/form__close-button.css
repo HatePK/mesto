@@ -1,0 +1,13 @@
+.form__close-button {
+    position: absolute;
+    top: -49px;
+    right: -49px;
+    background: none;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+}
+
+.form__close-button:focus {
+    outline: none;
+}

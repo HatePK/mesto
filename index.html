@@ -16,7 +16,7 @@
         <div class="profile__profile-info">
             <div class="profile__line">
                 <p class="profile__name">Жак-Ив Кусто</p>
-                <img class="profile__edit-button" alt="Редактировать профиль" src="./images/editbutton.svg">
+                <button class="profile__edit-button"><img  alt="Редактировать профиль" src="./images/editbutton.svg"></button>
             </div>
             <p class="profile__job">Исследователь океана</p>
         </div>
@@ -69,5 +69,15 @@
     <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
+    <section class="form">
+        <div class="form__container">
+            <button class="form__close-button"><img class="form__close-icon" alt="Закрыть" src="./images/close-icon.svg"></button>
+            <h2 class="form__title">Редактировать профиль</h2>
+            <input type="text" class="form__field-name" value="">
+            <input type="text" class="form__field-job" value="">
+            <input type="button" class="form__submit" value="Сохранить">
+        </div>
+    </section>
+    <script type="text/javascript" src="./scripts/index.js"></script>
 </body>
 </html>
