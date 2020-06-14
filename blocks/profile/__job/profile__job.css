@@ -6,3 +6,9 @@
     line-height: 22px;
     color: #FFFFFF;
 }
+
+@media screen and (max-width: 900px) {
+    .profile__job {
+        text-align: center;
+    }
+}

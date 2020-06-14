@@ -8,5 +8,12 @@
 .profile {
     display: flex;
     margin: 40px 0 0;
-    width: 882px;
+    max-width: 882px;
+    align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+    .profile {
+        flex-direction: column;
+    }
 }
