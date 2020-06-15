@@ -4,10 +4,18 @@
 @import url(./__edit-button/profile__edit-button.css);
 @import url(./__job/profile__job.css);
 @import url(./__add-button/profile__add-button.css);
+@import url(./__info/profile__info.css);
 
 .profile {
     display: flex;
     margin: 40px 0 0;
-    width: 882px;
-    flex-wrap: wrap;
+    max-width: 882px;
+    align-items: center;
+}
+
+@media screen and (max-width: 900px) {
+    .profile {
+        flex-direction: column;
+        margin: 42px 0 0;
+    }
 }

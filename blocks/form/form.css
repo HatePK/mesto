@@ -1,11 +1,11 @@
 @import url(./__container/form__container.css);
-@import url(./__close-icon/form__close-icon.css);
 @import url(./__title/form__title.css);
 @import url(./__field-name/form__field-name.css);
 @import url(./__field-job/form__field-job.css);
 @import url(./__submit/form__submit.css);
 @import url(./__close-button/form__close-button.css);
 @import url(./_opened/form_opened.css);
+@import url(./__close-icon/form__close-icon.css);
 
 .form {
     position: fixed;

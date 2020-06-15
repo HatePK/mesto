@@ -19,3 +19,7 @@
 .form__submit:focus {
     outline: none;
 }
+
+.form__submit:hover {
+background: rgba(0, 0, 0, 0.8);
+}
