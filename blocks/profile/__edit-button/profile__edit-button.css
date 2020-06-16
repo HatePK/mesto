@@ -6,6 +6,7 @@
     border: none;
     cursor: pointer;
     height: 24px;
+    margin-bottom: 13px;
 }
 
 .profile__edit-button:focus {
@@ -14,4 +15,10 @@
 
 .profile__edit-button:hover {
     opacity: 0.6;
+}
+
+@media screen and (max-width: 500px) {
+    .profile__edit-button {
+        margin-bottom: 11px;
+    }
 }

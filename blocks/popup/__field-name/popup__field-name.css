@@ -1,12 +1,17 @@
-.form__field-job {
+.popup__field-name {
     border: 0;
     border-bottom: 1px solid rgb(0,0,0,.2);
     margin-top: 29.74px;
     height: 26px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
 }
 
-.form__field-job::placeholder {
-    font-family: Inter;
+.popup__field-name::placeholder {
+    font-family: Inter, Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
@@ -15,6 +20,6 @@
     vertical-align: top;
 }
 
-.form__field-job:focus {
+.popup__field-name:focus {
     outline-width: 0;
 }
