@@ -1,13 +1,19 @@
 .element__like {
     padding: 0;
-    background: none;
+    background: url(../../../images/Like.svg) center no-repeat;
     box-shadow: none;
     border: none;
-    height: 100%;
+    height: 20px;
+    width: 27px;
     display: flex;
     align-items: center;
+    margin: auto 0;
 }
 
 .element__like:focus {
     outline: none;
+}
+
+.element__like:hover { 
+cursor: pointer;
 }

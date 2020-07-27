@@ -1,4 +1,4 @@
-.popup__field-name {
+.popup__field {
     border: 0;
     border-bottom: 1px solid rgb(0,0,0,.2);
     margin-top: 29.74px;
@@ -10,7 +10,7 @@
     line-height: 17px;
 }
 
-.popup__field-name::placeholder {
+.popup__field::placeholder {
     font-family: Inter, Arial, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -20,6 +20,6 @@
     vertical-align: top;
 }
 
-.popup__field-name:focus {
+.popup__field:focus {
     outline-width: 0;
 }

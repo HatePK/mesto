@@ -1,7 +1,10 @@
 @import url(./__image/element__image.css);
 @import url(./__panel/element__panel.css);
 @import url(./__like/element__like.css);
+@import url(./__like/element__like_type_active.css);
 @import url(./__text/element__text.css);
+@import url(./__delete-image/element__delete-image.css);
+@import url(./__delete/element__delete.css);
 
 .element {
     display: flex;
@@ -13,4 +16,5 @@
     margin: 0 auto 0;
     padding: 0;
     list-style-type: none;
+    position: relative;
 }

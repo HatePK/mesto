@@ -24,63 +24,49 @@
         </section>
         <section class="elements">
             <ul class="elements__list">
-                <li class="element">
-                    <img class="element__image" alt="Сооружение" src="./images/facility.jpg">
-                    <div class="element__panel">
-                        <h2 class="element__text">Карачаевск</h2>
-                        <button class="element__like"><img class="element__like-image" alt="Лайк" src="./images/Like.svg"></button>
-                    </div>  
-                </li>
-                <li class="element">
-                    <img class="element__image" alt="Небо" src="./images/sky.jpg">
-                    <div class="element__panel">
-                        <h2 class="element__text">Гора Эльбрус</h2>
-                        <button class="element__like"><img class="element__like-image" alt="Лайк" src="./images/Like.svg"></button>
-                    </div>  
-                </li>
-                <li class="element">
-                    <img class="element__image" alt="Гора" src="./images/rock.jpg">
-                    <div class="element__panel">
-                        <h2 class="element__text">Домбай</h2>
-                        <button class="element__like"><img class="element__like-image" alt="Лайк" src="./images/Like.svg"></button>
-                    </div>  
-                </li>
-                <li class="element">
-                    <img class="element__image" alt="Небо" src="./images/sky.jpg">
-                    <div class="element__panel">
-                        <h2 class="element__text">Гора Эльбрус</h2>
-                        <button class="element__like"><img class="element__like-image" alt="Лайк" src="./images/Like.svg"></button>
-                    </div>  
-                </li>
-                <li class="element">
-                    <img class="element__image" alt="Гора" src="./images/rock.jpg">
-                    <div class="element__panel">
-                        <h2 class="element__text">Домбай</h2>
-                        <button class="element__like"><img class="element__like-image" alt="Лайк" src="./images/Like.svg"></button>
-                    </div>  
-                </li>
-                <li class="element">
-                    <img class="element__image" alt="Сооружение" src="./images/facility.jpg">
-                    <div class="element__panel">
-                        <h2 class="element__text">Карачаево-Черкесия</h2>
-                        <button class="element__like"><img class="element__like-image" alt="Лайк" src="./images/Like.svg"></button>
-                    </div>  
-                </li>
             </ul>
         </section>
     </main>
     <footer class="footer">
         <p class="footer__copyright">© 2020 Mesto Russia</p>
     </footer>
-    <div class="popup">
+
+    <div class="popup popup_type_edit-profile">
         <form class="popup__container">
             <button type="button" class="popup__close-button"><img class="popup__close-icon" alt="Закрыть" src="./images/Close-Icon.svg"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" name="Имя" class="popup__field-name" value="">
-            <input type="text" name="Деятельность" class="popup__field-job" value="">
+            <input type="text" name="Имя" class="popup__field popup__field_type_name" value="">
+            <input type="text" name="Деятельность" class="popup__field popup__field_type_job" value="">
             <button type="submit" class="popup__submit" value="Сохранить">Сохранить</button> 
         </form>
     </div>
+    <div class="popup popup_type_new-place">
+        <form class="popup__container">
+            <button type="button" class="popup__close-button"><img class="popup__close-icon" alt="Закрыть" src="./images/Close-Icon.svg"></button>
+            <h2 class="popup__title">Новое место</h2>
+            <input type="text" name="Название" class="popup__field popup__field_type_place-name" value="" placeholder="Название">
+            <input type="text" name="Ссылка на картинку" class="popup__field popup__field_type_place-url" value="" placeholder="Ссылка на картинку">
+            <button type="submit" class="popup__submit" value="Сохранить">Создать</button> 
+        </form>
+    </div>
+    <div class="popup popup_type_image-big">
+        <form class="popup__container-image">
+            <button type="button" class="popup__close-button"><img class="popup__close-icon" alt="Закрыть" src="./images/Close-Icon.svg"></button>
+            <img class="popup__image" src="https://im0-tub-ru.yandex.net/i?id=bbc372d4c92bdbfe548c32efd389187c-l&n=13" alt="">
+            <h3 class="popup__image-title">Дима Падчин</h3>
+        </form>
+    </div>
+    
+    <template class="template-element">
+        <li class="element">
+            <img class="element__image" alt="" src="">
+            <button class="element__delete"><img class="element__delete-image" alt="Удалить" src="./images/DeleteButton.svg"></button>
+            <div class="element__panel">
+                <h2 class="element__text"></h2>
+                <button class="element__like"> </button>
+            </div>  
+        </li>
+    </template>
     <script type="text/javascript" src="./scripts/index.js"></script>
 </body>
 </html>
