@@ -8,7 +8,7 @@ const formEditButton = document.querySelector('.profile__edit-button');
 const AddPlaceButton = document.querySelector('.profile__add-button');
 const AddPlaceCloseButton = AddPlacePopup.querySelector('.popup__close-button');
 const EditProfileCloseButton = EditProfilePopup.querySelector('.popup__close-button');
-let ImagePopupImg = ImagePopup.querySelector('.popup__image');
+const ImagePopupImg = ImagePopup.querySelector('.popup__image');
 const ImagePopupTitle = ImagePopup.querySelector('.popup__image-title');
 const BigImageCloseButton = ImagePopup.querySelector('.popup__close-button');
 
