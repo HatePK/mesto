@@ -1,6 +1,8 @@
+@import url(./_valid/popup__field_valid.css);
+@import url(./_invalid/popup__field_invalid.css);
+@import url(./_error/popus__field-error.css);
+
 .popup__field {
-    border: 0;
-    border-bottom: 1px solid rgb(0,0,0,.2);
     margin-top: 29.74px;
     height: 26px;
     font-family: Inter, Arial, sans-serif;

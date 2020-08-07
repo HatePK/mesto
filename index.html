@@ -32,24 +32,31 @@
     </footer>
 
     <div class="popup popup_type_edit-profile">
+        <div class="popup__overlay popup__overlay_type_edit-profile"></div>
         <form class="popup__container">
             <button type="button" class="popup__close-button"><img class="popup__close-icon" alt="Закрыть" src="./images/Close-Icon.svg"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
-            <input type="text" name="Имя" class="popup__field popup__field_type_name" value="" placeholder="Имя">
-            <input type="text" name="Деятельность" class="popup__field popup__field_type_job" value="" placeholder="Деятельность">
-            <button type="submit" class="popup__submit" value="Сохранить">Сохранить</button> 
+                <input type="text" name="name-input" class="popup__field popup__field_valid popup__field_type_name" value="" placeholder="Имя" required minlength="2" maxlength="40">
+                <span class="popup__field-error" id="name-input-error"></span>  
+                <input type="text" name="job-input" class="popup__field popup__field_valid popup__field_type_job" value="" placeholder="Деятельность" required minlength="2" maxlength="200">
+                <span class="popup__field-error" id="job-input-error"></span>
+            <button type="submit" class="popup__submit popup__submit_active" value="Сохранить" disabled>Сохранить</button> 
         </form>
     </div>
     <div class="popup popup_type_new-place">
+        <div class="popup__overlay popup__overlay_type_new-place"></div>
         <form class="popup__container">
             <button type="button" class="popup__close-button"><img class="popup__close-icon" alt="Закрыть" src="./images/Close-Icon.svg"></button>
-            <h2 class="popup__title">Новое место</h2>
-            <input type="text" name="Название" class="popup__field popup__field_type_place-name" value="" placeholder="Название">
-            <input type="text" name="Ссылка на картинку" class="popup__field popup__field_type_place-url" value="" placeholder="Ссылка на картинку">
-            <button type="submit" class="popup__submit" value="Сохранить">Создать</button> 
+                <h2 class="popup__title">Новое место</h2>
+                <input type="text" name="place-input" class="popup__field popup__field_valid popup__field_type_place-name" value="" placeholder="Название" required minlength="1" maxlength="30">
+                <span class="popup__field-error" id="place-input-error"></span>
+                <input type="url" name="url-input" class="popup__field popup__field_valid popup__field_type_place-url" value="" placeholder="Ссылка на картинку" required>
+                <span class="popup__field-error" id="url-input-error"></span>
+            <button type="submit" class="popup__submit popup__submit_disabled" value="Сохранить" disabled>Создать</button> 
         </form>
     </div>
     <div class="popup popup_type_image-big">
+        <div class="popup__overlay popup__overlay_type_image-big"></div>
         <form class="popup__container-image">
             <button type="button" class="popup__close-button"><img class="popup__close-icon" alt="Закрыть" src="./images/Close-Icon.svg"></button>
             <img class="popup__image" src="https://im0-tub-ru.yandex.net/i?id=bbc372d4c92bdbfe548c32efd389187c-l&n=13" alt="">
@@ -68,5 +75,6 @@
         </li>
     </template>
     <script type="text/javascript" src="./scripts/index.js"></script>
+    <script type="text/javascript" src="./scripts/validate.js"></script>
 </body>
 </html>

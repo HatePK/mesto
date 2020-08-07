@@ -1,6 +1,8 @@
+@import url(./_active/popup__submit_active.css);
+@import url(./_disabled/popup__submit_disabled.css);
+
 .popup__submit {
     max-width: 358px;
-    background: #000000;
     border-radius: 2px;
     font-family: Inter, Arial, sans-serif;
     font-style: normal;
@@ -8,18 +10,11 @@
     font-size: 18px;
     line-height: 22px;
     text-align: center;
-    color: #FFFFFF;
     margin: 48px 0 36.51px;
     height: 50.15px;
-    box-shadow: none;
-    border: none;
-    cursor: pointer;
 }
 
 .popup__submit:focus {
     outline: none;
 }
 
-.popup__submit:hover {
-background: rgba(0, 0, 0, 0.8);
-}

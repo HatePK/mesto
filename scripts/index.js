@@ -2,6 +2,7 @@ const addPlacePopup = document.querySelector('.popup_type_new-place');
 const editProfilePopup = document.querySelector('.popup_type_edit-profile');
 const imagePopup = document.querySelector('.popup_type_image-big');
 const form = document.querySelector('.popup');
+const container = document.querySelector('.popup__container');
 const formEditButton = document.querySelector('.profile__edit-button');
 const addPlaceButton = document.querySelector('.profile__add-button');
 const addPlaceCloseButton = addPlacePopup.querySelector('.popup__close-button');
@@ -19,6 +20,9 @@ const placeInput = addPlacePopup.querySelector('.popup__field_type_place-name');
 const urlImageInput = addPlacePopup.querySelector('.popup__field_type_place-url');
 const elementTemplate = document.querySelector('.template-element').content.querySelector('.element'); 
 const cardsList = document.querySelector('.elements__list');
+const overlayAddCard = document.querySelector('.popup__overlay_type_new-place');
+const overlayEditCard = document.querySelector('.popup__overlay_type_edit-profile');
+const overlayImage = document.querySelector('.popup__overlay_type_image-big');
 
 const initialCards = [
     {
@@ -103,6 +107,10 @@ const togglePopup = function (popupModal) {
     popupModal.classList.toggle('popup_opened')
 }
 
+const EscapePopup = function (popupModal) {
+    popupModal.classList.remove('popup_opened');
+}
+
 // Редактирование профиля
 nameInput.value = profileName.textContent
 jobInput.value = profileJob.textContent
@@ -112,6 +120,14 @@ formEditButton.addEventListener('click', () => {
 editFormSubmitButton.addEventListener('click', formSubmitHandler);
 editProfileCloseButton.addEventListener('click', () => {
     togglePopup(editProfilePopup);
+});
+document.addEventListener('keydown', (evt) => {
+    if(evt.key === 'Escape') {
+        EscapePopup(editProfilePopup);
+    }
+});
+overlayEditCard.addEventListener('click', () => {
+    EscapePopup(editProfilePopup);
 });
 
 // Отрисовка карточек
@@ -127,11 +143,31 @@ addPlaceFormSubmitButton.addEventListener('click', addPlaceformSubmitHandler);
 addPlaceCloseButton.addEventListener('click', () => {
     togglePopup(addPlacePopup);
 });
+document.addEventListener('keydown', (evt) => {
+    if(evt.key === 'Escape') {
+        EscapePopup(addPlacePopup);
+    }
+});
+
+overlayAddCard.addEventListener('click', () => {
+    EscapePopup(addPlacePopup);
+});
 
 // Попап увеличения карточки
 bigImageCloseButton.addEventListener('click', () => {
     togglePopup(imagePopup);
+    closePopupEscape();
 });
+document.addEventListener('keydown', (evt) => {
+    if(evt.key === 'Escape') {
+        EscapePopup(imagePopup);
+    }
+});
+
+overlayImage.addEventListener('click', () => {
+    EscapePopup(imagePopup);
+});
+
 
 
 
