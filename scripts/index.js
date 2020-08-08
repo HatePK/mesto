@@ -66,7 +66,7 @@ function createCard (data) {
         evt.target.classList.toggle('element__like_type_active');
       })
 
-    elementDeleteButton.addEventListener('click', () => {
+    elementDeleteButton.addEventListener('click', (event) => {
         handleDeleteClick(event);
     })
 
