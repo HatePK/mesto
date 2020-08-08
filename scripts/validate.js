@@ -1,4 +1,4 @@
-const object = {
+const popupElements = {
     formSelector: '.popup__container',
     inputSelector: '.popup__field',
     inputValidClass: 'popup__field_valid',
@@ -7,6 +7,7 @@ const object = {
     inactiveButtonClass: 'popup__submit_disabled',
     activeButtonClass: 'popup__submit_active'
 }
+
 
 const enableValidation = ({ formSelector, inputSelector, inputValidClass, inputErrorClass, submitButtonSelector, inactiveButtonClass, activeButtonClass }) => {
     const forms = Array.from(document.querySelectorAll(formSelector));
@@ -17,7 +18,7 @@ const enableValidation = ({ formSelector, inputSelector, inputValidClass, inputE
 
         const inputs = Array.from(formElement.querySelectorAll(inputSelector));
         const buttonSubmit = formElement.querySelector(submitButtonSelector);
-
+        
         inputs.forEach((inputElement) => {
             inputElement.addEventListener('input', (evt) => {
                 const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
@@ -48,4 +49,4 @@ const enableValidation = ({ formSelector, inputSelector, inputValidClass, inputE
     });
 };
 
-enableValidation(object);
+enableValidation(popupElements);

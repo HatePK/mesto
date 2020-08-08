@@ -51,7 +51,7 @@ const initialCards = [
     }
 ];
 
-function handleDeleteClick() {
+function handleDeleteClick(event) {
     event.target.closest('.element').remove();
 }
 
@@ -67,7 +67,7 @@ function createCard (data) {
       })
 
     elementDeleteButton.addEventListener('click', () => {
-        handleDeleteClick();
+        handleDeleteClick(event);
     })
 
     elementImage.addEventListener('click', () => {
@@ -75,6 +75,7 @@ function createCard (data) {
         imagePopupImg.alt = data.name;
         ImagePopupTitle.textContent = data.name;
         togglePopup(imagePopup);
+        document.addEventListener('keydown', AddEscPopup);
     })
 
     elementTitle.textContent = data.name;
@@ -101,14 +102,26 @@ function addPlaceformSubmitHandler (evt) {
     togglePopup(addPlacePopup);
     placeInput.value = null
     urlImageInput.value = null
+    addPlaceFormSubmitButton.classList.remove('popup__submit_active');
+    addPlaceFormSubmitButton.classList.add('popup__submit_disabled');
+    addPlaceFormSubmitButton.disabled = true;
 }
 
 const togglePopup = function (popupModal) {
     popupModal.classList.toggle('popup_opened')
 }
 
+const AddEscPopup = function (evt) {
+    if(evt.key === 'Escape') { 
+        EscapePopup(editProfilePopup);
+        EscapePopup(addPlacePopup);
+        EscapePopup(imagePopup);
+    }
+}
+
 const EscapePopup = function (popupModal) {
     popupModal.classList.remove('popup_opened');
+    document.removeEventListener('keydown', AddEscPopup);
 }
 
 // Редактирование профиля
@@ -116,16 +129,14 @@ nameInput.value = profileName.textContent
 jobInput.value = profileJob.textContent
 formEditButton.addEventListener('click', () => {
     togglePopup(editProfilePopup);
+    document.addEventListener('keydown', AddEscPopup);
 });
+
 editFormSubmitButton.addEventListener('click', formSubmitHandler);
 editProfileCloseButton.addEventListener('click', () => {
-    togglePopup(editProfilePopup);
+    EscapePopup(editProfilePopup);
 });
-document.addEventListener('keydown', (evt) => {
-    if(evt.key === 'Escape') {
-        EscapePopup(editProfilePopup);
-    }
-});
+
 overlayEditCard.addEventListener('click', () => {
     EscapePopup(editProfilePopup);
 });
@@ -138,16 +149,13 @@ initialCards.forEach ((data) => {
 // Работа с попапом добавления карточки
 addPlaceButton.addEventListener('click', () => {
     togglePopup(addPlacePopup);
+    document.addEventListener('keydown', AddEscPopup);
 })
 addPlaceFormSubmitButton.addEventListener('click', addPlaceformSubmitHandler);
 addPlaceCloseButton.addEventListener('click', () => {
     togglePopup(addPlacePopup);
 });
-document.addEventListener('keydown', (evt) => {
-    if(evt.key === 'Escape') {
-        EscapePopup(addPlacePopup);
-    }
-});
+
 
 overlayAddCard.addEventListener('click', () => {
     EscapePopup(addPlacePopup);
@@ -156,12 +164,6 @@ overlayAddCard.addEventListener('click', () => {
 // Попап увеличения карточки
 bigImageCloseButton.addEventListener('click', () => {
     togglePopup(imagePopup);
-    closePopupEscape();
-});
-document.addEventListener('keydown', (evt) => {
-    if(evt.key === 'Escape') {
-        EscapePopup(imagePopup);
-    }
 });
 
 overlayImage.addEventListener('click', () => {
