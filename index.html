@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
+  <script src="./scripts/index.js" type="module" defer></script>
 </head>
 <body class="page">
     <header class="header">
@@ -33,7 +34,7 @@
 
     <div class="popup popup_type_edit-profile">
         <div class="popup__overlay popup__overlay_type_edit-profile"></div>
-        <form class="popup__container">
+        <form class="popup__container popup__container_edit-profile">
             <button type="button" class="popup__close-button"><img class="popup__close-icon" alt="Закрыть" src="./images/Close-Icon.svg"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
                 <input type="text" name="name-input" class="popup__field popup__field_valid popup__field_type_name" value="" placeholder="Имя" required minlength="2" maxlength="40">
@@ -45,7 +46,7 @@
     </div>
     <div class="popup popup_type_new-place">
         <div class="popup__overlay popup__overlay_type_new-place"></div>
-        <form class="popup__container">
+        <form class="popup__container popup__container_new-place">
             <button type="button" class="popup__close-button"><img class="popup__close-icon" alt="Закрыть" src="./images/Close-Icon.svg"></button>
                 <h2 class="popup__title">Новое место</h2>
                 <input type="text" name="place-input" class="popup__field popup__field_valid popup__field_type_place-name" value="" placeholder="Название" required minlength="1" maxlength="30">
@@ -74,7 +75,5 @@
             </div>  
         </li>
     </template>
-    <script type="text/javascript" src="./scripts/index.js"></script>
-    <script type="text/javascript" src="./scripts/validate.js"></script>
 </body>
 </html>

@@ -1,7 +1,3 @@
-import { popupElements, initialCards } from './config.js';
-import { Card } from './Card.js';
-import { FormValidator } from './validate.js';
-
 const addPlacePopup = document.querySelector('.popup_type_new-place');
 const editProfilePopup = document.querySelector('.popup_type_edit-profile');
 const imagePopup = document.querySelector('.popup_type_image-big');
@@ -28,23 +24,81 @@ const overlayAddCard = document.querySelector('.popup__overlay_type_new-place');
 const overlayEditCard = document.querySelector('.popup__overlay_type_edit-profile');
 const overlayImage = document.querySelector('.popup__overlay_type_image-big');
 
-// отрисовка карточек
-const prependTask = (element) =>{
-    cardsList.prepend(element);
+const initialCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
+
+function handleDeleteClick(event) {
+    event.target.closest('.element').remove();
 }
 
-initialCards.forEach((name)=>{
-    const card = new Card(name, elementTemplate, prependTask);
-    const element = card.getElement();
-    cardsList.append(element);
-})
+function createCard (data) {
+    const cardElement = elementTemplate.cloneNode(true);
+    const elementTitle = cardElement.querySelector('.element__text');
+    const elementImage = cardElement.querySelector('.element__image');
+    const elementLikeButton = cardElement.querySelector('.element__like');
+    const elementDeleteButton = cardElement.querySelector('.element__delete');
 
-// добавление карточки
-const addCard = (event)=>{
-    event.preventDefault();
-    const card = new Card({name: placeInput.value, link: urlImageInput.value}, elementTemplate, prependTask);
-    const element = card.getElement();
-    prependTask(element);
+    elementLikeButton.addEventListener('click', function (evt) {
+        evt.target.classList.toggle('element__like_type_active');
+      })
+
+    elementDeleteButton.addEventListener('click', (event) => {
+        handleDeleteClick(event);
+    })
+
+    elementImage.addEventListener('click', () => {
+        imagePopupImg.src = data.link;
+        imagePopupImg.alt = data.name;
+        ImagePopupTitle.textContent = data.name;
+        togglePopup(imagePopup);
+        document.addEventListener('keydown', AddEscPopup);
+    })
+
+    elementTitle.textContent = data.name;
+    elementImage.src = data.link;
+    elementImage.alt = data.name;
+
+    return cardElement;
+}
+
+function renderCard(data) {
+    cardsList.prepend(createCard (data));
+}
+
+function formSubmitHandler (evt) {
+    evt.preventDefault();
+    profileName.textContent = nameInput.value;
+    profileJob.textContent = jobInput.value;
+    togglePopup(editProfilePopup);
+}
+
+function addPlaceformSubmitHandler (evt) {
+    evt.preventDefault();
+    renderCard({name: placeInput.value, link: urlImageInput.value})
     togglePopup(addPlacePopup);
     placeInput.value = null
     urlImageInput.value = null
@@ -52,24 +106,6 @@ const addCard = (event)=>{
     addPlaceFormSubmitButton.classList.add('popup__submit_disabled');
     addPlaceFormSubmitButton.disabled = true;
 }
-
-addPlaceFormSubmitButton.addEventListener('click', addCard);
-
-// валидация
-const formEditProfileValidation = new FormValidator (popupElements.formEditProfileSelector, popupElements);
-formEditProfileValidation.enableValidation();
-
-const formNewPlaceValidation = new FormValidator (popupElements.formNewPlaceSelector, popupElements);
-formNewPlaceValidation.enableValidation();
-
-addPlaceCloseButton.addEventListener('click', () => {
-    togglePopup(addPlacePopup);
-});
-
-addPlaceButton.addEventListener('click', () => {
-    togglePopup(addPlacePopup);
-    document.addEventListener('keydown', AddEscPopup);
-})
 
 const togglePopup = function (popupModal) {
     popupModal.classList.toggle('popup_opened')
@@ -96,13 +132,6 @@ formEditButton.addEventListener('click', () => {
     document.addEventListener('keydown', AddEscPopup);
 });
 
-function formSubmitHandler (evt) {
-    evt.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;
-    togglePopup(editProfilePopup);
-}
-
 editFormSubmitButton.addEventListener('click', formSubmitHandler);
 editProfileCloseButton.addEventListener('click', () => {
     EscapePopup(editProfilePopup);
@@ -110,6 +139,21 @@ editProfileCloseButton.addEventListener('click', () => {
 
 overlayEditCard.addEventListener('click', () => {
     EscapePopup(editProfilePopup);
+});
+
+// Отрисовка карточек
+initialCards.forEach ((data) => {
+    renderCard(data)
+});
+
+// Работа с попапом добавления карточки
+addPlaceButton.addEventListener('click', () => {
+    togglePopup(addPlacePopup);
+    document.addEventListener('keydown', AddEscPopup);
+})
+addPlaceFormSubmitButton.addEventListener('click', addPlaceformSubmitHandler);
+addPlaceCloseButton.addEventListener('click', () => {
+    togglePopup(addPlacePopup);
 });
 
 
@@ -125,3 +169,10 @@ bigImageCloseButton.addEventListener('click', () => {
 overlayImage.addEventListener('click', () => {
     EscapePopup(imagePopup);
 });
+
+
+const formEditProfileValidation = new FormValidator (popupElements.formEditProfileSelector, popupElements);
+formEditProfileValidation.enableValidation();
+
+const formNewPlaceValidation = new FormValidator (popupElements.formNewPlaceSelector, popupElements);
+formNewPlaceValidation.enableValidation();
