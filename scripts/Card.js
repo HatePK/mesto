@@ -22,7 +22,7 @@ export class Card {
         document.querySelector('.popup__image').src = this._itemLink;
         document.querySelector('.popup__image').alt = this._itemName;
         document.querySelector('.popup__image-title').textContent = this._itemName;
-        document.querySelector('.popup_type_image-big').classList.add('popup_opened');
+        document.querySelector('.popup_type_image-big').classList.toggle('popup_opened');
     }
 
     _setListeners(){
