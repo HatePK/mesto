@@ -8,6 +8,8 @@ export class FormValidator {
         this._submitButtonSelector = popupElements.submitButtonSelector;
         this._inactiveButtonClass = popupElements.inactiveButtonClass;
         this._activeButtonClass = popupElements.activeButtonClass;
+        this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
+        this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
     }
 
     _showInputError(inputElement, errorMessage){ 
@@ -39,33 +41,36 @@ export class FormValidator {
         };
     }
 
-    _isFormValid(inputs){ // ФУНКЦИЯ ПРОВЕРКИ ВАЛИДНОСТИ
-        return inputs.some((inputElement) => !inputElement.validity.valid);
+    _isFormValid(inputList){ // ФУНКЦИЯ ПРОВЕРКИ ВАЛИДНОСТИ
+        return this._inputList.some((inputElement) => !inputElement.validity.valid);
     };
 
-    _toggleButtonState(inputs, buttonSubmit){ // ФУНКЦИЯ ПРОВЕРКИ BUTTON
-        if (this._isFormValid(inputs)) { // ЕСЛИ ФОРМА НЕВАЛИДНА ТО
-            buttonSubmit.classList.add(this._inactiveButtonClass); // ДОБАВЛЯЕМ НЕАКТИВНЫЙ КЛАСС
-            buttonSubmit.classList.remove(this._activeButtonClass); // УДАЛЯЕМ АКТИВНЫЙ
-            buttonSubmit.disabled = true; // КНОПКА ДИЗЕЙБЛЕД
+    _toggleButtonState(){ // ФУНКЦИЯ ПРОВЕРКИ BUTTON
+        if (this._isFormValid(this._inputList)) { // ЕСЛИ ФОРМА НЕВАЛИДНА ТО
+            this._buttonElement.classList.add(this._inactiveButtonClass); // ДОБАВЛЯЕМ НЕАКТИВНЫЙ КЛАСС
+            this._buttonElement.classList.remove(this._activeButtonClass); // УДАЛЯЕМ АКТИВНЫЙ
+            this._buttonElement.disabled = true; // КНОПКА ДИЗЕЙБЛЕД
         } else { // ЕСЛИ ВАЛИДНА ТО
-            buttonSubmit.classList.remove(this._inactiveButtonClass); // УДАЛЯЕМ НЕАКТИВНЫЙ КЛАСС
-            buttonSubmit.classList.add(this._activeButtonClass);// ДОБАВЛЯЕМ АКТИВНЫЙ
-            buttonSubmit.disabled = false; // КНОПКА АКТИВНА
+            this._buttonElement.classList.remove(this._inactiveButtonClass); // УДАЛЯЕМ НЕАКТИВНЫЙ КЛАСС
+            this._buttonElement.classList.add(this._activeButtonClass);// ДОБАВЛЯЕМ АКТИВНЫЙ
+            this._buttonElement.disabled = false; // КНОПКА АКТИВНА
         }
     }
 
     _setEventListeners(){ // ФУНКЦИЯ ПРИНИМАЕТ ФОРМУ И СЕЛЕКТОРЫ
-        const inputs = Array.from(this._formElement.querySelectorAll(this._inputSelector)); // МАССИВ ИЗ ИНПУТОВ
-        const buttonSubmit = this._formElement.querySelector(this._submitButtonSelector); // НАХОДИМ КНОПКУ
-
-        inputs.forEach((inputElement) => { // ДЛЯ КАЖДОГО ИНПУТА В ФОРМЕ ДЕЛАЕМ:
+        this._inputList.forEach((inputElement) => { // ДЛЯ КАЖДОГО ИНПУТА В ФОРМЕ ДЕЛАЕМ:
             inputElement.addEventListener('input', () => { // ПРИ НАЧАЛЕ ВВОДА ЗАПУСКАЮТСЯ ФУНКЦИИ:
                 this._checkInputValidity(inputElement); // ПРОВЕРКА ИНПУТА
-                this._toggleButtonState(inputs, buttonSubmit); // ПРОВЕРКА САБМИТА
+                this._toggleButtonState(); // ПРОВЕРКА САБМИТА
             });
         });
     };
+
+    disableSubmitButton() {
+        this._formElement.querySelector(this._submitButtonSelector).classList.remove('popup__submit_active');
+        this._formElement.querySelector(this._submitButtonSelector).classList.add('popup__submit_disabled');
+        this._formElement.querySelector(this._submitButtonSelector).disabled = true;
+    }
 
     enableValidation = () => {
         const submitFormHandler = (event) => {

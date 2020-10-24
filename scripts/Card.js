@@ -1,9 +1,8 @@
 export class Card {
-    constructor(item, selector, prependTask) {
+    constructor(item, selector) {
         this._itemName = item.name;
         this._itemLink = item.link;
         this._selector = selector;
-        this._prependTask = prependTask;
     }
 
     _getTemplate(){
@@ -19,10 +18,21 @@ export class Card {
     }
 
     _popupImage(){
+        const escapePopup = (popupModal) => {
+            popupModal.classList.remove('popup_opened');
+            document.removeEventListener('keydown', addEscPopup);
+        }
+        const addEscPopup = function (evt) {
+            const popupOpened = document.querySelector('.popup_opened');
+            if(evt.key === 'Escape') { 
+                escapePopup(popupOpened);
+            }
+        }
         document.querySelector('.popup__image').src = this._itemLink;
         document.querySelector('.popup__image').alt = this._itemName;
         document.querySelector('.popup__image-title').textContent = this._itemName;
-        document.querySelector('.popup_type_image-big').classList.toggle('popup_opened');
+        document.querySelector('.popup_type_image-big').classList.add('popup_opened');
+        document.addEventListener('keydown', addEscPopup);
     }
 
     _setListeners(){
