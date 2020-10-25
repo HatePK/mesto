@@ -23,8 +23,16 @@ const overlayAddCard = document.querySelector('.popup__overlay_type_new-place');
 const overlayEditCard = document.querySelector('.popup__overlay_type_edit-profile');
 const overlayImage = document.querySelector('.popup__overlay_type_image-big');
 
+function handleOpenPopup(name, link) {
+    const popupImage = imagePopup.querySelector('.popup__image');
+      popupImage.src = link;
+      popupImage.alt = name;
+      imagePopup.querySelector('.popup__image-title').textContent = name;
+      openPopup(imagePopup);
+}
+
 initialCards.forEach((item)=>{
-    const card = new Card(item, elementTemplate);
+    const card = new Card(item, elementTemplate, handleOpenPopup);
     const element = card.getElement();
     cardsList.append(element);
 })
@@ -39,7 +47,7 @@ formNewPlaceValidation.enableValidation();
 // добавление карточки
 const addCard = (event)=>{
     event.preventDefault();
-    const card = new Card({name: placeInput.value, link: urlImageInput.value}, elementTemplate);
+    const card = new Card({name: placeInput.value, link: urlImageInput.value}, elementTemplate, handleOpenPopup);
     const element = card.getElement();
     cardsList.prepend(element);
     escapePopup(addPlacePopup);
