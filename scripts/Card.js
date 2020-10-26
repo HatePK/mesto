@@ -21,14 +21,15 @@ export class Card {
     _setListeners(){
         this._element.querySelector('.element__like').addEventListener('click', ()=>this._likeButton());
         this._element.querySelector('.element__delete').addEventListener('click', ()=>this._deleteButton());
-        this._element.querySelector('.element__image').addEventListener('click', ()=>this._openCardHandler(this._itemName, this._itemLink));
+        this._itemImage.addEventListener('click', ()=>this._openCardHandler(this._itemName, this._itemLink));
     }
 
     getElement(){
         this._element = this._getTemplate();
+        this._itemImage = this._element.querySelector('.element__image');
         this._element.querySelector('.element__text').textContent = this._itemName;
-        this._element.querySelector('.element__image').src = this._itemLink;
-        this._element.querySelector('.element__image').alt = this._itemName;
+        this._itemImage.src = this._itemLink;
+        this._itemImage.alt = this._itemName;
         this._setListeners();
         return this._element;
     };

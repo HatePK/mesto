@@ -42,7 +42,7 @@ export class FormValidator {
     }
 
     _isFormValid(inputList){ // ФУНКЦИЯ ПРОВЕРКИ ВАЛИДНОСТИ
-        return this._inputList.some((inputElement) => !inputElement.validity.valid);
+        return inputList.some((inputElement) => !inputElement.validity.valid);
     };
 
     _toggleButtonState(){ // ФУНКЦИЯ ПРОВЕРКИ BUTTON
@@ -67,9 +67,9 @@ export class FormValidator {
     };
 
     disableSubmitButton() {
-        this._formElement.querySelector(this._submitButtonSelector).classList.remove('popup__submit_active');
-        this._formElement.querySelector(this._submitButtonSelector).classList.add('popup__submit_disabled');
-        this._formElement.querySelector(this._submitButtonSelector).disabled = true;
+        this._buttonElement.classList.remove('popup__submit_active');
+        this._buttonElement.classList.add('popup__submit_disabled');
+        this._buttonElement.disabled = true;
     }
 
     enableValidation = () => {
