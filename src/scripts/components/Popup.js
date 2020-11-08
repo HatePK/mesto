@@ -1,5 +1,3 @@
-import { popupElements } from './config.js';
-
 export class Popup {
     constructor(popupSelector) {
         this._popupSelector = document.querySelector(popupSelector);
