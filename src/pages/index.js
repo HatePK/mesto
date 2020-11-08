@@ -1,4 +1,4 @@
-import '../pages/index.css';
+import './index.css';
 
 import { popupElements, initialCards } from './utils/config.js';
 import { Card } from './components/Card.js';
