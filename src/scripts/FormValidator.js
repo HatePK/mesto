@@ -70,13 +70,12 @@ export class FormValidator {
         this._buttonElement.classList.remove('popup__submit_active');
         this._buttonElement.classList.add('popup__submit_disabled');
         this._buttonElement.disabled = true;
-    }
+    };
 
-    enableValidation = () => {
+    enableValidation() {
         const submitFormHandler = (event) => {
             event.preventDefault();
         };
-        
         this._formElement.addEventListener('submit', submitFormHandler);
         this._setEventListeners(); // ВЫПОЛНЯЕМ ФУНКЦИИ ИНПУТА И САБМИТА
     };

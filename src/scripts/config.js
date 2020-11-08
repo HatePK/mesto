@@ -7,7 +7,12 @@ export const popupElements = {
     inputErrorClass: 'popup__field_invalid',
     submitButtonSelector: '.popup__submit',
     inactiveButtonClass: 'popup__submit_disabled',
-    activeButtonClass: 'popup__submit_active'
+    activeButtonClass: 'popup__submit_active',
+    cardsListContainer: '.elements__list',
+    imagePopup: '.popup_type_image-big',
+    userName: '.profile__name',
+    userDescription: '.profile__job',
+    popupCloseButton: document.querySelector('.popup__close-button')
 }
 
 export const initialCards = [
