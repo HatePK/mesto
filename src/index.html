@@ -11,7 +11,11 @@
     </header>
     <main class="main">
         <section class="profile">
-            <img class="profile__avatar" src="./images/Avatar.png" alt="Кусто">
+            <div class="profile__avatar">
+                <button class="profile__edit-avatar">
+                    <img class="profile__edit-avatar-icon" src="./images/edit-ava-icon.svg" alt="редактирование аватарки">
+                </button>
+            </div>
             <div class="profile__info">
                 <div class="profile__line">
                     <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -62,6 +66,24 @@
             <h3 class="popup__image-title">Дима Падчин</h3>
         </form>
     </div>
+    <div class="popup popup_type_confirm">
+        <div class="popup__overlay popup__overlay_type_confirm"></div>
+        <form class="popup__container popup__container_confirm">
+            <button type="button" class="popup__close-button"><img class="popup__close-icon" alt="Закрыть" src="./images/Close-Icon.svg"></button>
+            <h2 class="popup__title">Вы уверены?</h2>
+            <button type="submit" class="popup__submit popup__submit_active" value="Сохранить">Да</button> 
+        </form>
+    </div>
+    <div class="popup popup_type_edit-avatar">
+        <div class="popup__overlay popup__overlay_type_confirm"></div>
+        <form class="popup__container popup__container_confirm">
+            <button type="button" class="popup__close-button"><img class="popup__close-icon" alt="Закрыть" src="./images/Close-Icon.svg"></button>
+            <h2 class="popup__title">Обновить аватар</h2>
+            <input type="url" name="avatar-url" class="popup__field popup__field_valid popup__field_type_avatar-url" value="" placeholder="Введите url" required>
+            <span class="popup__field-error" id="avatar-url-error"></span>
+            <button type="submit" class="popup__submit popup__submit_active" value="Сохранить">Сохранить</button> 
+        </form>
+    </div>
     
     <template class="template-element">
         <li class="element">
@@ -69,7 +91,11 @@
             <button class="element__delete"><img class="element__delete-image" alt="Удалить" src="./images/DeleteButton.svg"></button>
             <div class="element__panel">
                 <h2 class="element__text"></h2>
-                <button class="element__like"></button>
+                <div class='element__like-container'>
+                    <button class="element__like"></button>
+                    <div class="element__like-counter">
+                        <p class="element__like-conter-amount">5</p>    
+                    </div>
             </div>  
         </li>
     </template>
