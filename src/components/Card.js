@@ -1,5 +1,5 @@
 export class Card {
-    constructor(name, link, likes, id, ownerId, userId, api, apiAddLike, apiDelLike, selector, openCardHandler, handleOpenConfirmPopup) {
+    constructor(name, link, likes, id, ownerId, userId, api, selector, openCardHandler, handleOpenConfirmPopup) {
         this._itemName = name;
         this._itemLink = link;
         this._likes = likes;
@@ -7,8 +7,6 @@ export class Card {
         this._ownerId = ownerId;
         this._userId = userId;
         this._api = api;
-        this._apiAddLike = apiAddLike;
-        this._apiDelLike = apiDelLike;
         this._selector = selector;
         this._openCardHandler = openCardHandler;
         this._handleOpenConfirmPopup = handleOpenConfirmPopup;
@@ -31,14 +29,14 @@ export class Card {
 
     _likeButton(){
         if (this._likes.find(item => item._id == this._userId)) {
-            this._apiDelLike.deleteLike(this._id)
+            this._api.deleteLike(this._id)
                 .then(result => {
                     this._likes = result.likes;
                         this._element.querySelector('.element__like-conter-amount').textContent = this._likes.length;
                         this._element.querySelector('.element__like').classList.remove('element__like_type_active');
                 })
             } else { 
-            this._apiAddLike.addLike(this._id)
+            this._api.addLike(this._id)
             .then(result => {
                 this._likes = result.likes;
                 this._element.querySelector('.element__like-conter-amount').textContent = this._likes.length;

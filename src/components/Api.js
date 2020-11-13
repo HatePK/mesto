@@ -1,18 +1,16 @@
 export class Api {
     constructor(config) {
         this.headers = config.headers;
-        this.url = config.url
+        this.url = config.url;
+        this._handleOriginalResponse = config.function;
     }
 
+    
+
     getCards() {
-        return fetch(this.url, {
+        return fetch(`${this.url}/cards`, {
             headers: this.headers
-        }).then((result) => {
-            if (!result.ok) {
-                return Promise.reject('Server error');
-            }
-            return result.json();
-        }).then((data) => {
+        }).then(this._handleOriginalResponse).then((data) => {
             return data;
         }).catch(err => {
             alert(err);
@@ -20,16 +18,11 @@ export class Api {
     }
 
     createCard(name, link) {
-        return fetch(this.url, { 
+        return fetch(`${this.url}/cards`, { 
             method: "POST",
             headers: this.headers,
             body: JSON.stringify({name, link})
-        }).then((result) => {
-            if (!result.ok) {
-                return Promise.reject('Server error');
-            }
-            return result.json();
-        }).then((data) => {
+        }).then(this._handleOriginalResponse).then((data) => {
             return data;
         }).catch(err => {
             alert(err);
@@ -37,14 +30,9 @@ export class Api {
     }
 
     userInfo() {
-        return fetch(this.url, {
+        return fetch(`${this.url}/users/me`, {
             headers: this.headers
-        }).then((result) => {
-            if (!result.ok) {
-                return Promise.reject('Server error');
-            }
-            return result.json();
-        }).then((data) => {
+        }).then(this._handleOriginalResponse).then((data) => {
             return data;
         }).catch(err => {
             alert(err);
@@ -52,16 +40,11 @@ export class Api {
     }
 
     setUserInfo(name, about) {
-        return fetch(this.url, {
+        return fetch(`${this.url}/users/me`, {
             method: "PATCH",
             headers: this.headers,
             body: JSON.stringify({name, about})
-        }).then((result) => {
-            if (!result.ok) {
-                return Promise.reject('Server error');
-            }
-            return result.json();
-        }).then((data) => {
+        }).then(this._handleOriginalResponse).then((data) => {
             return data;
         }).catch(err => {
             alert(err);
@@ -69,16 +52,11 @@ export class Api {
     }
 
     deleteCard(id) {
-        return fetch(`${this.url}/${id}`, {
+        return fetch(`${this.url}/cards/${id}`, {
             method: "DELETE",
             headers: this.headers,
             body: JSON.stringify({id})
-        }).then((result) => {
-            if (!result.ok) {
-                return Promise.reject('Server error');
-            }
-            return result.json();
-        }).then((data) => {
+        }).then(this._handleOriginalResponse).then((data) => {
             return data;
         }).catch(err => {
             alert(err);
@@ -86,16 +64,11 @@ export class Api {
     }
 
     addLike(id) {
-        return fetch(`${this.url}/${id}`, {
+        return fetch(`${this.url}/cards/likes/${id}`, {
             method: "PUT",
             headers: this.headers,
             body: JSON.stringify({id})
-        }).then((result) => {
-            if (!result.ok) {
-                return Promise.reject('Server error');
-            }
-            return result.json();
-        }).then((data) => {
+        }).then(this._handleOriginalResponse).then((data) => {
             return data;
         }).catch(err => {
             alert(err);
@@ -103,16 +76,11 @@ export class Api {
     }
 
     deleteLike(id) {
-        return fetch(`${this.url}/${id}`, {
+        return fetch(`${this.url}/cards/likes/${id}`, {
             method: "DELETE",
             headers: this.headers,
             body: JSON.stringify({id})
-        }).then((result) => {
-            if (!result.ok) {
-                return Promise.reject('Server error');
-            }
-            return result.json();
-        }).then((data) => {
+        }).then(this._handleOriginalResponse).then((data) => {
             return data;
         }).catch(err => {
             alert(err);
@@ -120,16 +88,11 @@ export class Api {
     }
 
     editAvatar(avatar) {
-        return fetch(this.url, {
+        return fetch(`${this.url}/users/me/avatar`, {
             method: "PATCH",
             headers: this.headers,
             body: JSON.stringify({avatar})
-        }).then((result) => {
-            if (!result.ok) {
-                return Promise.reject('Server error');
-            }
-            return result.json();
-        }).then((data) => {
+        }).then(this._handleOriginalResponse).then((data) => {
             return data;
         }).catch(err => {
             alert(err);

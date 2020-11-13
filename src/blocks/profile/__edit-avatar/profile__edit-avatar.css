@@ -7,12 +7,12 @@
     cursor: pointer;    
     border-radius: 150px;
     background-color: #000000;
-    opacity: 0%;
+    opacity: 0;
     border: none;
 }
 
 .profile__edit-avatar:hover {
-    opacity: 80%;
+    opacity: 0.8;
 }
 
 .profile__edit-avatar:focus {
